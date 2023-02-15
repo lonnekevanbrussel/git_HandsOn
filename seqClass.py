@@ -36,6 +36,7 @@ if args.motif:						# if a motif is entered
     else:
         print("MOTIF NOT FOUND")
 
+# if percentage argument is added, calculate per base type the percentage in the sequence
 if args.perc:
     base_counter = Counter(args.seq)
     seq_length = len(args.seq)
