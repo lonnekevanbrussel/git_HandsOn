@@ -2,10 +2,12 @@
 
 import sys, re
 from argparse import ArgumentParser
+from collections import Counter
 
 parser = ArgumentParser(description = 'Classify a sequence as DNA or RNA')
 parser.add_argument("-s", "--seq", type = str, required = True, help = "Input sequence")
 parser.add_argument("-m", "--motif", type = str, required = False, help = "Motif")
+parser.add_argument("-p", "--perc", type = int, required = False, help = "Percentage in decimals")
 
 if len(sys.argv) == 1:
     parser.print_help()
@@ -33,3 +35,9 @@ if args.motif:						# if a motif is entered
         print("MOTIF FOUND")
     else:
         print("MOTIF NOT FOUND")
+
+if args.perc:
+    base_counter = Counter(args.seq)
+    seq_length = len(args.seq)
+    for base, value in base_counter.items():
+        print("Percentage " + base + " in sequence " + args.seq + ": " + str(round((value/seq_length)*100,args.perc)) + "%")
