@@ -15,7 +15,7 @@ args = parser.parse_args()
 
 args.seq = args.seq = args.seq.upper()			# transform sequence into upperclass
 if re.search('^[ACGTU]+$', args.seq):			# search for ACGTU in sequence
-    if re.search('T', args.seq) & re.search('U', args.seq):	# if sequence has T ánd U
+    if re.search('T', args.seq) and re.search('U', args.seq):		# if T ánd U are in the sequence
         print ('The sequence is not DNA nor RNA')
     elif re.search('T', args.seq):			# if T is in sequence
         print ('The sequence is DNA')
